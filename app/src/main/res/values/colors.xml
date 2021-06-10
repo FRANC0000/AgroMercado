@@ -7,4 +7,6 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="launcher_secondary">#9cd346</color>
+    <color name="launcher_third"> #F3BD6E </color>
 </resources>
