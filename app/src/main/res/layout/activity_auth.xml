@@ -15,18 +15,51 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
         android:contentDescription="TODO"
-        app:layout_constraintBottom_toTopOf="@+id/et_Email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/lettuce" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="match_parent"
+        android:layout_height="39dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="AGROMERCADO"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <Button
+        android:id="@+id/googleButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="48dp"
+        android:backgroundTint="@color/launcher_third"
+        android:elevation="15dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="Ingresar con Google"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnIngresar" />
 
     <EditText
         android:id="@+id/et_Email"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
         android:background="#FFFFFF"
         android:backgroundTint="#FFFFFF"
@@ -41,7 +74,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <TextView
         android:id="@+id/btnRegistrar"
@@ -55,14 +88,14 @@
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnIngresar" />
+        app:layout_constraintTop_toBottomOf="@+id/googleButton" />
 
     <Button
         android:id="@+id/btnIngresar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="48dp"
         android:backgroundTint="@color/launcher_secondary"
         android:elevation="15dp"
@@ -80,7 +113,7 @@
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:background="#FFFFFF"
         android:elevation="10dp"

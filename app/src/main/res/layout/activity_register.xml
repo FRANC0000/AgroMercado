@@ -27,7 +27,7 @@
         android:layout_height="39dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:fontFamily="sans-serif-black"
+        android:fontFamily="sans-serif-smallcaps"
         android:text="AGROMERCADO"
         android:textAlignment="center"
         android:textColor="@color/black"

@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="launcher_secondary">#9cd346</color>
     <color name="launcher_third"> #F3BD6E </color>
+    <color name="green_secondary"> #F282B52C</color>
+    <color name="gris_grisáceo">#7A7A7A</color>
 </resources>

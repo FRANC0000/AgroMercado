@@ -1,5 +1,6 @@
 package com.example.agromercado
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -17,16 +18,42 @@ class HomeActivity : AppCompatActivity() {
         val bundle = intent.extras
         val email = bundle?.getString("email")
         setup(email ?: "")
+
+        val prefs = getSharedPreferences(getString(R.string.prefs_file),
+            Context.MODE_PRIVATE).edit()
+        prefs.putString("email", email)
+        prefs.apply()
     }
 
     private fun setup(email: String){
         tv_emailValidador.text = email
 
         btnCerrarSesion.setOnClickListener {
+            val prefs = getSharedPreferences(getString(R.string.prefs_file),
+                Context.MODE_PRIVATE).edit()
+            prefs.clear()
+            prefs.apply()
+            showAuth()
             auth.signOut()
-            val intent = Intent(this, AuthActivity::class.java)
+            onBackPressed()
+        }
+
+        btnMiPerfil.setOnClickListener(){
+            val intent = Intent(this, ProfileActivity::class.java).apply { putExtra("email", email) }
             startActivity(intent)
-            finish()
+        }
+
+        btnMisProductos.setOnClickListener {
+            val intent = Intent(this, ProductsActivity::class.java).apply{
+                putExtra("email", email)
+            }
+            startActivity(intent)
         }
     }
+
+    private fun showAuth(){
+        val intent = Intent(this, AuthActivity::class.java)
+        startActivity(intent)
+    }
+
 }

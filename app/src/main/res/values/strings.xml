@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AgroMercado</string>
+    <string name="prefs_file">com.example.agromercado.PREFERENCE_FILE_KEY</string>
+    <string name="title_activity_profile">Map</string>
 </resources>
