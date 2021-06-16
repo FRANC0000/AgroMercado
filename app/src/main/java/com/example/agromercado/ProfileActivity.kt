@@ -3,15 +3,11 @@ package com.example.agromercado
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.content.Intent
-import android.content.Context
-import android.content.DialogInterface
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_profile.*
-import com.google.firebase.auth.FirebaseAuth
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -65,7 +61,7 @@ class ProfileActivity : AppCompatActivity(), OnMapReadyCallback {
                     nombreTextView.setText(task.get("nombre") as String?)
                     descripcionTextView.setText(task.get("descripción") as String?)
 
-                    if (task.get("enlaces") == "Añade un sitio web..."){
+                    if (task.get("enlaces") == "Añade un sitio web..." || task.get("enlaces") == ""){
                         enlacesTextView.visibility = View.INVISIBLE
                     }
                     else{
@@ -82,7 +78,7 @@ class ProfileActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun showEditProfile(email: String){
-        val intent = Intent(this, editarPerfilActivity::class.java).apply{
+        val intent = Intent(this, EditProfileActivity::class.java).apply{
             putExtra("email", email)
         }
         startActivity(intent)

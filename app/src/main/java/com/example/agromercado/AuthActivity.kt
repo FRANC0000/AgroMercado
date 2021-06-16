@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -14,7 +13,6 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_auth.*
 
 class AuthActivity : AppCompatActivity() {
@@ -31,7 +29,6 @@ class AuthActivity : AppCompatActivity() {
         setup()
         session()
     }
-
 
 
     private fun session(){
@@ -123,48 +120,62 @@ class AuthActivity : AppCompatActivity() {
             try {
                 val account = task.getResult(ApiException::class.java)
 
-                if(account != null){
-                    val credential = GoogleAuthProvider.getCredential(account.idToken,null)
+                if (account != null) {
+                    val credential = GoogleAuthProvider.getCredential(account.idToken, null)
 
-                    FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener(){
+                    FirebaseAuth.getInstance().signInWithCredential(credential)
+                        .addOnCompleteListener() {
 
-                        if (it.isSuccessful){
+                            if (it.isSuccessful) {
+                                Toast.makeText(this,"Te has registrado exitosamente",Toast.LENGTH_SHORT)
 
-                            db.collection("Users")
-                                .document(account.email?:"").set(
-                                    hashMapOf(
-                                        "nombre" to account.displayName,
-                                        "celular" to 999999999,
-                                        "comuna" to "Añade una comuna...",
-                                        "direccion" to "Añade una dirección...",
-                                        "descripción" to "Añade una descripción...",
-                                        "enlaces" to "Añade un sitio web...",
-                                        "fechaNac" to "01/01/2000",
-                                        "genero" to "Otro",
-                                        "region" to "Añade una región...",
-                                        "rut" to "11.111.111-1",
-                                        "latitud" to -33.5112729808116,
-                                        "longitud" to -70.75239818684706
-                                    )
-                                )
-                                .addOnSuccessListener {
-                                    Toast.makeText(this, "Tu cuenta se ha creado correctamente", Toast.LENGTH_SHORT).show()
-                                }
-                            AlertDialog.Builder(this).apply{
-                                setTitle("Completar perfil")
-                                setMessage("¿Deseas completar tu perfil?")
-                                setPositiveButton("Si"){ _: DialogInterface, _: Int ->
-                                    val email = account.email
-                                    showEditProfile(email?:"")
-                                }
-                                setNegativeButton("No"){ _: DialogInterface, _: Int ->
-                                    showMenu(account.email?:"")
-                                }
-                            }.show()
-                        } else {
-                            showAlert()
+                                db.collection("Users")
+                                    .document(account.email?:"")
+                                    .get()
+                                    .addOnSuccessListener {
+                                        if (it.data.isNullOrEmpty()){
+                                            AlertDialog.Builder(this).apply {
+                                                setTitle("Tu perfil está incompleto")
+                                                setMessage("¿Deseas completar tu perfil?")
+                                                setPositiveButton("Si") { _: DialogInterface, _: Int ->
+                                                    db.collection("Users")
+                                                        .document(account.email?:"")
+                                                        .set(hashMapOf(
+                                                            "nombre" to account.displayName,
+                                                            "latitud" to -33.5112729808116,
+                                                            "longitud" to -70.75239818684706
+                                                        ))
+                                                    showEditProfile(account.email ?: "")
+                                                }
+                                                setNegativeButton("No") { _: DialogInterface, _: Int ->
+                                                    db.collection("Users")
+                                                        .document(account.email?:"")
+                                                        .set(hashMapOf(
+                                                            "nombre" to account.displayName,
+                                                            "celular" to 999999999,
+                                                            "comuna" to "Añade una comuna...",
+                                                            "direccion" to "Añade una dirección...",
+                                                            "descripción" to "Añade una descripción...",
+                                                            "enlaces" to "Añade un sitio web...",
+                                                            "fechaNac" to "01/01/2000",
+                                                            "genero" to "Otro",
+                                                            "region" to "Añade una región...",
+                                                            "rut" to "11.111.111-1",
+                                                            "latitud" to -33.5112729808116,
+                                                            "longitud" to -70.75239818684706))
+                                                        .addOnSuccessListener {
+                                                            showMenu(account.email ?: "")
+                                                        }
+
+                                                }
+                                            }.show()
+                                        }
+                                        else{
+                                            showMenu(account.email?:"")
+                                        }
+                                    }
+                            }
                         }
-                    }
                 }
             }catch (e: ApiException){
                 showAlert()
@@ -173,7 +184,7 @@ class AuthActivity : AppCompatActivity() {
     }
 
     private fun showEditProfile(email: String){
-        val intent = Intent(this, editarPerfilActivity::class.java).apply{
+        val intent = Intent(this, EditProfileActivity::class.java).apply{
             putExtra("email", email)
         }
         startActivity(intent)

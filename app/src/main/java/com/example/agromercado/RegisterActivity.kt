@@ -48,6 +48,7 @@ class RegisterActivity : AppCompatActivity() {
                                 "longitud" to -70.75239818684706
                             ))
                             Toast.makeText(this, "Tu cuenta se ha creado correctamente", Toast.LENGTH_SHORT).show()
+
                             AlertDialog.Builder(this).apply{
                                 setTitle("Completar perfil")
                                 setMessage("¿Deseas completar tu perfil?")
@@ -70,7 +71,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun showEditProfile(email: String){
-        val intent = Intent(this, editarPerfilActivity::class.java).apply{
+        val intent = Intent(this, EditProfileActivity::class.java).apply{
             putExtra("email", email)
         }
         startActivity(intent)
