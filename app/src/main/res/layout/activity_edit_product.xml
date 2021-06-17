@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/green_secondary"
-    tools:context=".ProductDetailActivity">
+    tools:context=".EditProductActivity">
 
     <LinearLayout
-        android:id="@+id/linearLayout5"
+        android:id="@+id/linearLayout7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/green_secondary"
@@ -19,7 +19,6 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-            android:id="@+id/imageButton"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:background="@color/launcher_secondary"
@@ -39,17 +38,17 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="40dp"
             android:layout_marginBottom="5dp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="100dp"
-                android:layout_height="40dp"
+                android:layout_height="match_parent"
                 android:background="@color/launcher_secondary"
                 android:elevation="5dp"
                 android:fontFamily="sans-serif-smallcaps"
@@ -60,8 +59,8 @@
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/nombreProducto_et"
+            <EditText
+                android:id="@+id/editnombreproducto_et"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
@@ -72,20 +71,22 @@
                 android:inputType="textPersonName"
                 android:paddingLeft="10dp"
                 android:paddingTop="5dp"
+                android:selectAllOnFocus="true"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gris_grisáceo"
+                android:textSize="14sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="40dp"
             android:layout_marginBottom="5dp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="100dp"
-                android:layout_height="40dp"
+                android:layout_height="match_parent"
                 android:background="@color/launcher_secondary"
                 android:elevation="5dp"
                 android:fontFamily="sans-serif-smallcaps"
@@ -93,7 +94,7 @@
                 android:paddingTop="5dp"
                 android:text="Fecha de Publicación"
                 android:textAlignment="textStart"
-                android:textColor="@color/black"
+                android:textColor="@color/gris_grisáceo"
                 android:textStyle="bold" />
 
             <TextView
@@ -108,20 +109,20 @@
                 android:inputType="textPersonName"
                 android:paddingLeft="10dp"
                 android:paddingTop="5dp"
-                android:textColor="@color/black"
+                android:textColor="@color/gris_grisáceo"
                 android:textColorHint="@color/gris_grisáceo"
                 android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="40dp"
             android:layout_marginBottom="5dp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="100dp"
-                android:layout_height="40dp"
+                android:layout_height="match_parent"
                 android:background="@color/launcher_secondary"
                 android:elevation="5dp"
                 android:fontFamily="sans-serif-smallcaps"
@@ -129,7 +130,7 @@
                 android:paddingTop="5dp"
                 android:text="Nombre del Productor"
                 android:textAlignment="textStart"
-                android:textColor="@color/black"
+                android:textColor="@color/gris_grisáceo"
                 android:textStyle="bold" />
 
             <TextView
@@ -144,20 +145,20 @@
                 android:inputType="textPersonName"
                 android:paddingLeft="10dp"
                 android:paddingTop="5dp"
-                android:textColor="@color/black"
+                android:textColor="@color/gris_grisáceo"
                 android:textColorHint="@color/gris_grisáceo"
                 android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="40dp"
             android:layout_marginBottom="5dp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="100dp"
-                android:layout_height="40dp"
+                android:layout_height="match_parent"
                 android:background="@color/launcher_secondary"
                 android:elevation="5dp"
                 android:fontFamily="sans-serif-smallcaps"
@@ -168,8 +169,8 @@
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/precio_et"
+            <EditText
+                android:id="@+id/editarprecio_et"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
@@ -182,18 +183,19 @@
                 android:paddingTop="5dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gris_grisáceo"
+                android:textSize="14sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="40dp"
             android:layout_marginBottom="5dp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="100dp"
-                android:layout_height="40dp"
+                android:layout_height="match_parent"
                 android:background="@color/launcher_secondary"
                 android:elevation="5dp"
                 android:fontFamily="sans-serif-smallcaps"
@@ -204,8 +206,8 @@
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/categoria_et"
+            <EditText
+                android:id="@+id/editarcategoria_et"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
@@ -216,20 +218,22 @@
                 android:inputType="textPersonName"
                 android:paddingLeft="10dp"
                 android:paddingTop="5dp"
+                android:selectAllOnFocus="true"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gris_grisáceo"
+                android:textSize="14sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_marginBottom="5dp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="100dp"
-                android:layout_height="40dp"
+                android:layout_height="match_parent"
                 android:background="@color/launcher_secondary"
                 android:elevation="5dp"
                 android:fontFamily="sans-serif-smallcaps"
@@ -240,8 +244,8 @@
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/descripcion_et"
+            <EditText
+                android:id="@+id/editardescripcion_et"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
@@ -253,20 +257,22 @@
                 android:minHeight="40dp"
                 android:paddingLeft="10dp"
                 android:paddingTop="5dp"
+                android:selectAllOnFocus="true"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gris_grisáceo"
+                android:textSize="14sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="40dp"
             android:layout_marginBottom="5dp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="100dp"
-                android:layout_height="40dp"
+                android:layout_height="match_parent"
                 android:background="@color/launcher_secondary"
                 android:elevation="5dp"
                 android:fontFamily="sans-serif-smallcaps"
@@ -277,8 +283,8 @@
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/cantidad_et"
+            <EditText
+                android:id="@+id/editarcantidad_et"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
@@ -289,20 +295,22 @@
                 android:inputType="textPersonName"
                 android:paddingLeft="10dp"
                 android:paddingTop="5dp"
+                android:selectAllOnFocus="true"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gris_grisáceo"
+                android:textSize="14sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="40dp"
             android:layout_marginBottom="5dp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="100dp"
-                android:layout_height="40dp"
+                android:layout_height="match_parent"
                 android:background="@color/launcher_secondary"
                 android:elevation="5dp"
                 android:fontFamily="sans-serif-smallcaps"
@@ -310,7 +318,7 @@
                 android:paddingTop="5dp"
                 android:text="Email del Productor"
                 android:textAlignment="textStart"
-                android:textColor="@color/black"
+                android:textColor="@color/gris_grisáceo"
                 android:textStyle="bold" />
 
             <TextView
@@ -325,20 +333,20 @@
                 android:inputType="textPersonName"
                 android:paddingLeft="10dp"
                 android:paddingTop="5dp"
-                android:textColor="@color/black"
+                android:textColor="@color/gris_grisáceo"
                 android:textColorHint="@color/gris_grisáceo"
                 android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="40dp"
             android:layout_marginBottom="5dp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="100dp"
-                android:layout_height="40dp"
+                android:layout_height="match_parent"
                 android:background="@color/launcher_secondary"
                 android:elevation="5dp"
                 android:fontFamily="sans-serif-smallcaps"
@@ -349,8 +357,8 @@
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/unidadMedida_et"
+            <EditText
+                android:id="@+id/editarunidadMedida_et"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
@@ -361,20 +369,22 @@
                 android:inputType="textPersonName"
                 android:paddingLeft="10dp"
                 android:paddingTop="5dp"
+                android:selectAllOnFocus="true"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gris_grisáceo"
+                android:textSize="14sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="40dp"
             android:layout_marginBottom="5dp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="100dp"
-                android:layout_height="40dp"
+                android:layout_height="match_parent"
                 android:background="@color/launcher_secondary"
                 android:elevation="5dp"
                 android:fontFamily="sans-serif-smallcaps"
@@ -382,7 +392,7 @@
                 android:paddingTop="5dp"
                 android:text="Contacto del productor"
                 android:textAlignment="textStart"
-                android:textColor="@color/black"
+                android:textColor="@color/gris_grisáceo"
                 android:textStyle="bold" />
 
             <TextView
@@ -397,14 +407,14 @@
                 android:inputType="textPersonName"
                 android:paddingLeft="10dp"
                 android:paddingTop="5dp"
-                android:textColor="@color/black"
+                android:textColor="@color/gris_grisáceo"
                 android:textColorHint="@color/gris_grisáceo"
                 android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/editProductBtn"
+        android:id="@+id/saveEditProductBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -413,19 +423,5 @@
         app:backgroundTint="@color/ic_launcher_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_baseline_edit_24" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/deleteProductBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="25dp"
-        android:clickable="true"
-        app:backgroundTint="@color/ic_launcher_background"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/editProductBtn"
-        app:srcCompat="@drawable/ic_baseline_delete_24" />
-
+        app:srcCompat="@drawable/ic_baseline_save_24" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -51,35 +51,56 @@ class EditProfileActivity : AppCompatActivity() {
     private fun setup(email: String) {
 
         guardarDatosButton.setOnClickListener() {
-            db.collection("Users").document(email).set(
-                hashMapOf(
-                    "rut" to rutTextView.text.toString(),
-                    "nombre" to name_tv.text.toString(),
-                    "fechaNac" to datePicker.text.toString(),
-                    "genero" to gender_tv.text.toString(),
-                    "celular" to cel_tv.text.toString().toInt(),
-                    "direccion" to dir_tv.text.toString(),
-                    "comuna" to comuna_tv.text.toString(),
-                    "region" to region_tv.text.toString(),
-                    "descripción" to desc_tv.text.toString(),
-                    "latitud" to lat_tv.text.toString().toDouble(),
-                    "longitud" to long_tv.text.toString().toDouble(),
-                    "enlaces" to enlaces_tv.text.toString()
-                )
-            ).addOnSuccessListener {
-                Toast.makeText(applicationContext, "Datos modificados", Toast.LENGTH_SHORT).show()
-                val intent =
-                    Intent(this, ProfileActivity::class.java).apply { putExtra("email", email) }
-                startActivity(intent)
-                finish()
 
-            }.addOnFailureListener {
-                //Buscar cómo mostrar cuál es el error
+            if(rutTextView.text.isEmpty() ||
+                name_tv.text.isEmpty() ||
+                datePicker.text.isEmpty() ||
+                gender_tv.text.isEmpty() ||
+                cel_tv.text.isEmpty() ||
+                dir_tv.text.isEmpty() ||
+                comuna_tv.text.isEmpty() ||
+                region_tv.text.isEmpty() ||
+                desc_tv.text.isEmpty() ||
+                lat_tv.text.isEmpty() ||
+                long_tv.text.isEmpty()) {
+
                 AlertDialog.Builder(this).apply {
                     setTitle("Error")
-                    setMessage(it.message)
+                    setMessage("Los campos no pueden estar vacíos")
                     setPositiveButton("Aceptar", null)
                 }.show()
+            }
+            else {
+                db.collection("Users").document(email).set(
+                    hashMapOf(
+                        "rut" to rutTextView.text.toString(),
+                        "nombre" to name_tv.text.toString(),
+                        "fechaNac" to datePicker.text.toString(),
+                        "genero" to gender_tv.text.toString(),
+                        "celular" to cel_tv.text.toString().toInt(),
+                        "direccion" to dir_tv.text.toString(),
+                        "comuna" to comuna_tv.text.toString(),
+                        "region" to region_tv.text.toString(),
+                        "descripción" to desc_tv.text.toString(),
+                        "latitud" to lat_tv.text.toString().toDouble(),
+                        "longitud" to long_tv.text.toString().toDouble(),
+                        "enlaces" to enlaces_tv.text.toString()
+                    )
+                ).addOnSuccessListener {
+                    Toast.makeText(applicationContext, "Datos modificados", Toast.LENGTH_SHORT).show()
+                    val intent =
+                        Intent(this, ProfileActivity::class.java).apply { putExtra("email", email) }
+                    startActivity(intent)
+                    finish()
+
+                }.addOnFailureListener {
+                    //Buscar cómo mostrar cuál es el error
+                    AlertDialog.Builder(this).apply {
+                        setTitle("Error")
+                        setMessage(it.message)
+                        setPositiveButton("Aceptar", null)
+                    }.show()
+                }
             }
         }
     }

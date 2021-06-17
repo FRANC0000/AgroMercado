@@ -44,14 +44,17 @@ class ProductAdapter(private val activity: Activity, private val dataset : List<
         else{
             holder.layout.detailBtn.setOnClickListener {
                 val email = auth.currentUser!!.email.toString()
-                showDetailProduct(email)
+                val idprod = product.uid.toString()
+                showDetailProduct(email, idprod)
             }
         }
     }
 
-    private fun showDetailProduct(email: String){
+    private fun showDetailProduct(email: String, idprod: String){
+
         val intent = Intent(activity, ProductDetailActivity::class.java).apply{
             putExtra("email", email)
+            putExtra("idprod", idprod)
         }
         activity.startActivity(intent)
     }
