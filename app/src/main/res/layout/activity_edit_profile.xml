@@ -361,7 +361,7 @@
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/datePicker"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -443,7 +443,7 @@
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/lat_tv"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -456,7 +456,7 @@
                         android:paddingEnd="10dp"
                         android:selectAllOnFocus="true"
                         android:singleLine="true"
-                        android:textColor="@color/black"
+                        android:textColor="@color/gris_grisáceo"
                         android:textColorHint="#7A7A7A"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -482,7 +482,7 @@
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/long_tv"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -495,7 +495,7 @@
                         android:paddingEnd="10dp"
                         android:selectAllOnFocus="true"
                         android:singleLine="true"
-                        android:textColor="@color/black"
+                        android:textColor="@color/gris_grisáceo"
                         android:textColorHint="#7A7A7A"
                         android:textSize="14sp" />
 

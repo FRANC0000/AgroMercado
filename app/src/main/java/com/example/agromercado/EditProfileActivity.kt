@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.Geocoder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
@@ -11,6 +12,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_edit_profile.*
 
@@ -71,6 +75,7 @@ class EditProfileActivity : AppCompatActivity() {
                 }.show()
             }
             else {
+
                 db.collection("Users").document(email).set(
                     hashMapOf(
                         "rut" to rutTextView.text.toString(),
@@ -110,12 +115,23 @@ class EditProfileActivity : AppCompatActivity() {
             .document(email)
             .get()
             .addOnSuccessListener { task ->
+                val geocoder = Geocoder(this)
+                val listaDir = geocoder.getFromLocationName((task.get("direccion") as String? +", "+ task.get("comuna") as String? +", "+ task.get("region") as String?), 1)
+                if (listaDir.isNotEmpty()){
+                    var direcc = listaDir[0]
+                    var lat = direcc.latitude
+                    var long = direcc.longitude
+                    lat_tv.setText(lat.toString())
+                    long_tv.setText(long.toString())
+                }
+                else{
+                    lat_tv.setText("-33.51087")
+                    long_tv.setText("-70.75311")
+                }
                 rutTextView.setText(task.get("rut") as String?)
                 name_tv.setText(task.get("nombre") as String?)
                 datePicker.setText(task.get("fechaNac") as String?)
                 gender_tv.setText(task.get("genero") as String?)
-                lat_tv.setText(task.get("latitud").toString())
-                long_tv.setText(task.get("longitud").toString())
                 desc_tv.setText(task.get("descripción") as String?)
                 enlaces_tv.setText(task.get("enlaces") as String?)
                 cel_tv.setText(task.get("celular").toString())
