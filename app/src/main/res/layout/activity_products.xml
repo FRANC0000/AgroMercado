@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
-            android:background="@drawable/search_input"
+            android:background="@color/green_secondary"
             android:elevation="15dp"
             android:orientation="horizontal" />
 
@@ -30,7 +30,10 @@
             android:layout_height="match_parent"
             android:layout_marginBottom="5dp"
             android:background="@color/green_secondary"
-            android:padding="15dp" />
+            android:paddingLeft="32dp"
+            android:paddingTop="20dp"
+            android:paddingRight="32dp"
+            android:paddingBottom="20dp" />
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

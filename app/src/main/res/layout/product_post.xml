@@ -190,6 +190,19 @@
                         android:layout_height="match_parent">
 
                         <Button
+                            android:id="@+id/detailBtn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:backgroundTint="@color/gris_grisáceo"
+                            android:elevation="5dp"
+                            android:fontFamily="sans-serif-smallcaps"
+                            android:text="Detalle"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <Button
                             android:id="@+id/buyBtn"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -199,22 +212,9 @@
                             android:fontFamily="sans-serif-smallcaps"
                             android:text="Comprar"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <Button
-                            android:id="@+id/detailBtn"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginEnd="8dp"
-                            android:backgroundTint="@color/gris_grisáceo"
-                            android:elevation="5dp"
-                            android:fontFamily="sans-serif-smallcaps"
-                            android:text="Detalle"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/buyBtn"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintEnd_toStartOf="@+id/detailBtn"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="1.0" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </LinearLayout>

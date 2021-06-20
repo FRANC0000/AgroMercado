@@ -6,14 +6,20 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.activity_products.*
 
 class HomeActivity : AppCompatActivity() {
     private val auth = FirebaseAuth.getInstance()
+    private val db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +36,25 @@ class HomeActivity : AppCompatActivity() {
             Context.MODE_PRIVATE).edit()
         prefs.putString("email", email)
         prefs.apply()
+
+        db.collection("Productos")
+            .addSnapshotListener { value, error ->
+
+                val products = value!!.toObjects(Product::class.java)
+                Log.d("doc", "products $products")
+
+                products.forEachIndexed { index, product ->
+                    product.uid = value.documents[index].id
+                }
+
+                rvCatalogo.apply {
+                    setHasFixedSize(true)
+                    layoutManager = LinearLayoutManager(this@HomeActivity)
+                    adapter = CatalogoAdapter(this@HomeActivity, products)
+                }
+
+            }
+
     }
 
     private fun setup(email: String){
@@ -98,5 +123,7 @@ class HomeActivity : AppCompatActivity() {
             }
         }
     }
+
+
 
 }

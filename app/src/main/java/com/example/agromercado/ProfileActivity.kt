@@ -18,10 +18,12 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.example.agromercado.databinding.ActivityProfileBinding
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
+import com.google.firebase.auth.FirebaseAuth
 import java.util.*
 
 class ProfileActivity : AppCompatActivity(), OnMapReadyCallback {
 
+    private val auth = FirebaseAuth.getInstance()
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityProfileBinding
     private val db = FirebaseFirestore.getInstance()
@@ -52,6 +54,14 @@ class ProfileActivity : AppCompatActivity(), OnMapReadyCallback {
 
         }
         Log.d("doc", ""+emailM)
+
+        if (auth.currentUser?.email != email){
+
+            editButton.layoutParams.width = 0
+            editButton.layoutParams.height= 0
+            editButton.visibility = View.INVISIBLE
+        }
+
     }
 
 
@@ -66,6 +76,8 @@ class ProfileActivity : AppCompatActivity(), OnMapReadyCallback {
 
                     if (task.get("enlaces") == "Añade un sitio web..." || task.get("enlaces") == ""){
                         enlacesTextView.visibility = View.INVISIBLE
+                        enlacesTextView.layoutParams.height = 0
+                        enlacesTextView.layoutParams.width = 0
                     }
                     else{
                         enlacesTextView.setText("Sitio web: "+ task.get("enlaces"))

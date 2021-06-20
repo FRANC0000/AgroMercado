@@ -4,22 +4,54 @@ import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_product_detail.*
+import kotlinx.android.synthetic.main.product_post.*
+import kotlin.math.max
 
 class ProductDetailActivity : AppCompatActivity() {
 
     private val db = FirebaseFirestore.getInstance()
+    private val auth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_detail)
 
+        profileProductorBtn.visibility = View.INVISIBLE
+
         //setup
         val bundle = intent.extras
         val email = bundle?.getString("email")
         val idprod = bundle?.getString("idprod")
+
+        if (auth.currentUser?.email != email){
+
+            deleteProductBtn.visibility = View.INVISIBLE
+            deleteProductBtn.layoutParams.width = 0
+            deleteProductBtn.layoutParams.height = 0
+
+
+            editProductBtn.layoutParams.width = 0
+            editProductBtn.layoutParams.height = 0
+            deleteProductBtn.visibility = View.INVISIBLE
+
+            profileProductorBtn.visibility = View.VISIBLE
+
+            profileProductorBtn.setOnClickListener {
+                val intent = Intent(this, ProfileActivity::class.java).apply{
+                    putExtra("email", email)
+                    putExtra("idprod", idprod)
+                }
+                startActivity(intent)
+                finish()
+            }
+        }
 
         db.collection("Productos")
             .document(idprod?:"")
