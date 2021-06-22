@@ -42,10 +42,10 @@ class ProductAdapter(private val activity: Activity, private val dataset : List<
             holder.layout.layoutParams.width = 0
         }
         else{
+            holder.layout.constraintCompras.visibility = View.INVISIBLE
+            holder.layout.constraintCompras.layoutParams.height = 0
+            holder.layout.constraintCompras.layoutParams.width = 0
             holder.layout.detailBtn.setOnClickListener {
-                holder.layout.buyBtn.visibility = View.INVISIBLE
-                holder.layout.buyBtn.height = 0
-                holder.layout.buyBtn.width = 0
                 val email = auth.currentUser!!.email.toString()
                 val idprod = product.uid.toString()
                 showDetailProduct(email, idprod)
