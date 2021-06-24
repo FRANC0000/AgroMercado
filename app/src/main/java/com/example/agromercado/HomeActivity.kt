@@ -16,6 +16,8 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_products.*
+import java.io.ObjectOutputStream
+import java.io.Serializable
 
 class HomeActivity : AppCompatActivity() {
     private val auth = FirebaseAuth.getInstance()

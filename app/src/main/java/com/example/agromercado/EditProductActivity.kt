@@ -43,13 +43,13 @@ class EditProductActivity : AppCompatActivity() {
                 nameproductor2 = it.get("nameProductor").toString()
 
                 editarprecio_et.setText(it.get("precio").toString()) //editable
-                editarcategoria_et.setText(it.get("categoria").toString()) //editable
+                editarcategoria_et.setText(it.get("categoria").toString())
                 editardescripcion_et.setText(it.get("descripcion").toString()) //editable
                 editarcantidad_et.setText(it.get("cantidad").toString()) //editable
                 emailProductor_et.setText(it.get("emailProductor").toString())
                 email2 = it.get("emailProductor").toString()
 
-                editarunidadMedida_et.setText(it.get("unidadMedida").toString()) //editable
+                editarunidadMedida_et.setText(it.get("unidadMedida").toString())
                 contactoProductor_et.setText(it.get("contactoProductor").toString())
                 contacto2 = it.get("contactoProductor").toString().toInt()
 

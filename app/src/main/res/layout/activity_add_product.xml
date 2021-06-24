@@ -120,17 +120,14 @@
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
-            <EditText
+            <Spinner
                 android:id="@+id/categoriaprod_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/custom_input"
                 android:fontFamily="sans-serif-smallcaps"
-                android:hint="ej. Verdura"
                 android:minHeight="40dp"
-                android:paddingLeft="12dp"
-                android:paddingTop="5dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gris_grisáceo"
                 android:textStyle="bold" />
@@ -223,17 +220,14 @@
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
-            <EditText
+            <Spinner
                 android:id="@+id/unimed_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/custom_input"
                 android:fontFamily="sans-serif-smallcaps"
-                android:hint="ej. Unidad"
                 android:minHeight="40dp"
-                android:paddingLeft="12dp"
-                android:paddingTop="5dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gris_grisáceo"
                 android:textStyle="bold" />

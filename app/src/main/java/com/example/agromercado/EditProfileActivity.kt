@@ -8,6 +8,9 @@ import android.location.Geocoder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
@@ -16,11 +19,13 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.activity_add_product.*
 import kotlinx.android.synthetic.main.activity_edit_profile.*
 
 
 class EditProfileActivity : AppCompatActivity() {
     private val db = FirebaseFirestore.getInstance()
+    var posGender = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +42,19 @@ class EditProfileActivity : AppCompatActivity() {
 
         subirArchivo.setOnClickListener{
             checkForStoragePermission()
+        }
+
+        //spinner unidad de medida
+        val genero = listOf("Masculino", "Femenino", "Otro")
+        val adaptadorGender = ArrayAdapter(this, android.R.layout.simple_spinner_item, genero)
+        gender_tv.adapter = adaptadorGender
+        gender_tv.onItemSelectedListener = object :
+                AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                posGender = position
+            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
         }
 
     }
@@ -59,7 +77,6 @@ class EditProfileActivity : AppCompatActivity() {
             if(rutTextView.text.isEmpty() ||
                 name_tv.text.isEmpty() ||
                 datePicker.text.isEmpty() ||
-                gender_tv.text.isEmpty() ||
                 cel_tv.text.isEmpty() ||
                 dir_tv.text.isEmpty() ||
                 comuna_tv.text.isEmpty() ||
@@ -75,13 +92,26 @@ class EditProfileActivity : AppCompatActivity() {
                 }.show()
             }
             else {
+                var generoPalabras = ""
+
+                if (posGender == 0){
+                    generoPalabras = "Masculino"
+                }
+
+                if (posGender == 1){
+                    generoPalabras = "Femenino"
+                }
+
+                if (posGender == 2){
+                    generoPalabras = "Otro"
+                }
 
                 db.collection("Users").document(email).set(
                     hashMapOf(
                         "rut" to rutTextView.text.toString(),
                         "nombre" to name_tv.text.toString(),
                         "fechaNac" to datePicker.text.toString(),
-                        "genero" to gender_tv.text.toString(),
+                        "genero" to generoPalabras,
                         "celular" to cel_tv.text.toString().toInt(),
                         "direccion" to dir_tv.text.toString(),
                         "comuna" to comuna_tv.text.toString(),
@@ -131,7 +161,6 @@ class EditProfileActivity : AppCompatActivity() {
                 rutTextView.setText(task.get("rut") as String?)
                 name_tv.setText(task.get("nombre") as String?)
                 datePicker.setText(task.get("fechaNac") as String?)
-                gender_tv.setText(task.get("genero") as String?)
                 desc_tv.setText(task.get("descripción") as String?)
                 enlaces_tv.setText(task.get("enlaces") as String?)
                 cel_tv.setText(task.get("celular").toString())

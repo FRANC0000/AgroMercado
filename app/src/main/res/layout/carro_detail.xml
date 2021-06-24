@@ -183,6 +183,17 @@
                             android:textColor="@color/black" />
                     </LinearLayout>
 
+                    <Button
+                        android:id="@+id/eliminarBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="2dp"
+                        android:background="@drawable/search_input"
+                        android:backgroundTint="@color/rojito"
+                        android:fontFamily="sans-serif-smallcaps"
+                        android:text="Eliminar" />
+
                 </LinearLayout>
 
             </LinearLayout>

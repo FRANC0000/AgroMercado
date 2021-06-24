@@ -402,7 +402,7 @@
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
-                    <EditText
+                    <Spinner
                         android:id="@+id/gender_tv"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -439,7 +439,7 @@
                         android:paddingTop="10dp"
                         android:text="Latitud"
                         android:textAlignment="textStart"
-                        android:textColor="@color/black"
+                        android:textColor="@color/gris_grisáceo"
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
@@ -478,7 +478,7 @@
                         android:paddingTop="10dp"
                         android:text="Longitud"
                         android:textAlignment="textStart"
-                        android:textColor="@color/black"
+                        android:textColor="@color/gris_grisáceo"
                         android:textSize="14sp"
                         android:textStyle="bold" />
 

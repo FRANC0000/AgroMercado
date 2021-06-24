@@ -203,10 +203,10 @@
                 android:paddingTop="5dp"
                 android:text="Categoría"
                 android:textAlignment="textStart"
-                android:textColor="@color/black"
+                android:textColor="@color/gris_grisáceo"
                 android:textStyle="bold" />
 
-            <EditText
+            <TextView
                 android:id="@+id/editarcategoria_et"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -219,7 +219,7 @@
                 android:paddingLeft="10dp"
                 android:paddingTop="5dp"
                 android:selectAllOnFocus="true"
-                android:textColor="@color/black"
+                android:textColor="@color/gris_grisáceo"
                 android:textColorHint="@color/gris_grisáceo"
                 android:textSize="14sp"
                 android:textStyle="bold" />
@@ -354,10 +354,10 @@
                 android:paddingTop="5dp"
                 android:text="Unidad de Medida"
                 android:textAlignment="textStart"
-                android:textColor="@color/black"
+                android:textColor="@color/gris_grisáceo"
                 android:textStyle="bold" />
 
-            <EditText
+            <TextView
                 android:id="@+id/editarunidadMedida_et"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -370,7 +370,7 @@
                 android:paddingLeft="10dp"
                 android:paddingTop="5dp"
                 android:selectAllOnFocus="true"
-                android:textColor="@color/black"
+                android:textColor="@color/gris_grisáceo"
                 android:textColorHint="@color/gris_grisáceo"
                 android:textSize="14sp"
                 android:textStyle="bold" />
